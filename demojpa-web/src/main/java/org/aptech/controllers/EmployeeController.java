@@ -24,8 +24,8 @@ import java.util.Set;
 public class EmployeeController extends HttpServlet {
     @EJB
     CompanyBean<Employee> employeeBean;
-    @EJB
-    CompanyBean<Course> courseBean;
+//    @EJB
+//    CompanyBean<Course> courseBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,9 +40,12 @@ public class EmployeeController extends HttpServlet {
             if (employeeBean.add(employee)) {
 
                 // Use for case using mappedBy
+                /*
                 for (Course course : employee.getCourses()) {
                     courseBean.add(course);
                 }
+
+                 */
                 request.getServletContext().getRequestDispatcher("/AddEmployee.jsp").include(request, response);
                 response.getWriter().write("Add Emmployee Success.");
             } else {
