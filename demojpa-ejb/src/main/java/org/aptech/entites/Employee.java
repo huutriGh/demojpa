@@ -36,8 +36,8 @@ public class Employee implements Serializable {
 
     //@OneToMany( mappedBy = "employee")
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "employee_id")
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    //@JoinColumn(name = "employee_id")
     private Set<Course> courses;
 
     public Employee() {
