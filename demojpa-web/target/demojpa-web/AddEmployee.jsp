@@ -11,30 +11,55 @@
     <title>Title</title>
 </head>
 <body>
- <h2>Add Employee</h2>
+<h2>Add Employee</h2>
 <form action="employee" method="POST">
 
     <p>
-        <input name="fullName" type="text" placeholder="Full Name" >
+        <input name="fullName" type="text" placeholder="Full Name">
     </p>
     <p>
-        <input name="birthday" type="date" placeholder="Birthday" >
+        <input name="birthday" type="date" placeholder="Birthday">
     </p>
+    <fieldset>
+        <legend>Address</legend>
+        <p>
+            <input name="street" type="text" placeholder="Street">
+        </p>
+        <p>
+            <input name="ward" type="text" placeholder="Ward">
+        </p>
+        <p>
+            <input name="district" type="text" placeholder="District">
+        </p>
+        <p>
+            <input name="city" type="text" placeholder="City">
+        </p>
+
+    </fieldset>
+    <fieldset>
+        <legend>Company</legend>
+        <p>
+            <input name="companyId" type="text" placeholder="Company Id">
+        </p>
+
+
+    </fieldset>
+    <fieldset>
+        <legend>Course</legend>
+        <p>
+            <input name="courseName" type="checkbox" value="WCD" id="wcd" >
+            <label for="wcd">WCD</label>
+        </p>
+        <p>
+            <input name="courseName" type="checkbox" value="EAD" id="ead">
+            <label for="ead">EAD</label>
+        </p>
+
+    </fieldset>
     <p>
-        <input name="street" type="text" placeholder="Street" >
+        <input name="action" type="submit" value="ADD">
     </p>
-    <p>
-        <input name="ward" type="text" placeholder="Ward" >
-    </p>
-    <p>
-        <input name="district" type="text" placeholder="District" >
-    </p>
-    <p>
-        <input name="city" type="text" placeholder="City" >
-    </p>
-    <p>
-        <input type="submit" name="action" value="ADD">
-    </p>
+
 
 </form>
 </body>

@@ -1,9 +1,12 @@
 package org.aptech.entites;
 
 
+import org.hibernate.engine.internal.Cascade;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "Employee")
@@ -16,11 +19,36 @@ public class Employee implements Serializable {
     private Date birthday;
 
 
-    @OneToOne(mappedBy = "employee",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
-    private  Address address;
+    private Address address;
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "Employee_Company",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "company_id")
+    )
+    private Set<Company> company;
+
+
+
+    //@OneToMany( mappedBy = "employee")
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "employee_id")
+    private Set<Course> courses;
 
     public Employee() {
+    }
+
+    public Set<Company> getCompany() {
+        return company;
+    }
+
+    public void setCompany(Set<Company> company) {
+        this.company = company;
     }
 
     public long getId() {
@@ -53,5 +81,13 @@ public class Employee implements Serializable {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 }
