@@ -18,7 +18,7 @@ import java.util.Date;
 @WebServlet(urlPatterns = "/employee")
 public class EmployeeController extends HttpServlet {
     @EJB
-    EmployeeBean employeeBean;
+    EmployeeBean<Employee> employeeBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,7 +30,7 @@ public class EmployeeController extends HttpServlet {
         String action = request.getParameter("action");
         if (Action.ADD.toString().equalsIgnoreCase(action)) {
             Employee employee = getEmployee(request);
-            if (employeeBean.addEmployee(employee)) {
+            if (employeeBean.addEntity(employee)) {
                 request.getServletContext().getRequestDispatcher("/AddEmployee.jsp").include(request, response);
                 response.getWriter().write("Add Emmployee Success.");
             } else {

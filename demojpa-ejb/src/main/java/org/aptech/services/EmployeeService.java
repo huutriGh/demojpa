@@ -3,18 +3,20 @@ package org.aptech.services;
 import org.aptech.entites.Employee;
 
 import javax.ejb.Remote;
+import java.io.Serializable;
 import java.util.List;
 
 @Remote
-public interface EmployeeService {
-    public List<Employee> getAllEmployee();
+public interface EmployeeService<T extends Serializable>  {
+    public List<T> getAllEntity();
 
-    public Employee getEmployeeById(long id);
+    public T getEntityById(long id);
 
-    public boolean addEmployee(Employee employee);
+    public boolean addEntity(T entity);
 
-    public boolean updateEmployee(Employee employee);
+    public boolean updateEntity(T entity);
 
-    public boolean deleteEmployee(long id);
+    public boolean deleteEntity(long id);
+
 
 }
